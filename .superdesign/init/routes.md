@@ -1,3 +1,12 @@
+# Routes
+
+| URL | Component | Layout |
+| --- | --- | --- |
+| `/login` | `src/views/login/index.vue` | `src/App.vue` router view |
+
+## Full router source (`src/router/index.ts`)
+
+```ts
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 const publicRoutes: RouteRecordRaw[] = [
@@ -12,3 +21,4 @@ const router = createRouter({
 })
 
 export default router
+```

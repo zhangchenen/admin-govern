@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "theme-palette": {
+      "targetKind": "new-ui",
+      "projectId": "5a923b4e-2ede-49d7-bc0b-0f47e2bfdbf2",
+      "activeDraftId": "7dd734b6-4fa0-4591-8bba-d0390d187aa5",
+      "designSystemPath": ".superdesign/design-system.md",
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        "src/assets/main.css",
+        "src/style/index.scss",
+        "src/App.vue",
+        "src/views/login/index.vue"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "FF3F89AEF028A5E2E11885F966AE234096A3274CA4F2E24B0025C1AC26717749",
+        "src/assets/main.css": "8A760A784F79570E06FDCB0C6A2677EA66C304230B7925EA313D63B46D8BA407",
+        "src/style/index.scss": "6108B695311362F1170B2D45590D7D38A78881337FEC8EA9FFD04FDBAF7F9510",
+        "src/App.vue": "D015112DD290861CDF5226CF05B32C8BD4A1613B0ABB0C579E8CBE43B4993890",
+        "src/views/login/index.vue": "F254AE8AB104861CACB9E8F777625C2BD9D1B341529BFE77912F79B4273D9CCD"
+      },
+      "components": [],
+      "drafts": {
+        "7dd734b6-4fa0-4591-8bba-d0390d187aa5": {
+          "title": "Admin MOOC Palette",
+          "visualDirection": "bright blue and white enterprise technology palette",
+          "currentVersion": 1
+        },
+        "95a408c3-e2bc-47a8-80c7-79b53411def8": {
+          "title": "Admin MOOC - Dark Palette",
+          "visualDirection": "dark navy companion palette with accessible light-blue actions",
+          "parentDraftId": "7dd734b6-4fa0-4591-8bba-d0390d187aa5",
+          "currentVersion": 1
+        }
+      },
+      "updatedAt": "2026-09-26T02:47:32Z"
+    }
+  }
+}

@@ -1,0 +1,564 @@
+<!DOCTYPE html><html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin MOOC - 暗色系统调色板预览</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            blue: {
+              50: '#EFF6FF',
+              100: '#DBEAFE',
+              200: '#BFDBFE',
+              300: '#93C5FD',
+              400: '#60A5FA',
+              500: '#3B82F6',
+              600: '#2563EB',
+              700: '#1D4ED8',
+              800: '#1E40AF',
+              900: '#172554',
+            },
+            app: {
+              primary: '#60A5FA',
+              'primary-hover': '#93C5FD',
+              'primary-active': '#3B82F6',
+              'on-primary': '#071426',
+              page: '#0B1220',
+              surface: '#111C2E',
+              'surface-alt': '#17243A',
+              'surface-hover': '#1D2E47',
+              text: '#F1F5F9',
+              'text-secondary': '#CBD5E1',
+              'text-muted': '#94A3B8',
+              'text-disabled': '#64748B',
+              border: '#2B3A50',
+              'border-strong': '#41536B',
+              focus: '#93C5FD',
+            },
+            status: {
+              success: {
+                DEFAULT: '#4ADE80',
+                bg: '#102C23',
+                border: '#235D44'
+              },
+              warning: {
+                DEFAULT: '#FBBF24',
+                bg: '#332510',
+                border: '#725319'
+              },
+              danger: {
+                DEFAULT: '#F87171',
+                bg: '#321B24',
+                border: '#763445'
+              },
+              info: {
+                DEFAULT: '#38BDF8',
+                bg: '#102B3B',
+                border: '#24546B'
+              }
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Consolas', 'monospace']
+          },
+          boxShadow: {
+            'card': '0 12px 36px rgba(0, 0, 0, .4)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+      background-color: #0B1220;
+      color: #F1F5F9;
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen max-w-[1440px] mx-auto p-8 lg:p-12 space-y-16" data-sd-id="1">
+    
+    <!-- Header -->
+    <header class="space-y-4" data-sd-id="2">
+      <h1 class="text-[36px] leading-[44px] font-bold text-app-text tracking-tight" data-sd-id="3">
+        Admin MOOC — 暗色科技风格调色板预览
+      </h1>
+      <p class="text-[18px] leading-[26px] font-semibold text-app-text-secondary max-w-3xl" data-sd-id="4">
+        专为企业级后台设计的纯净、精确的暗色视觉系统。包含完整的色彩渐变、排版规范及基础交互组件。基于 Vue 3 + Tailwind CSS 4 构建参考。
+      </p>
+    </header>
+
+    <!-- Colors -->
+    <section class="space-y-8" data-sd-id="5">
+      <h2 class="text-[28px] leading-[36px] font-bold text-app-text" data-sd-id="6">
+        基础色彩系统
+      </h2>
+      
+      <!-- Blue Ramp (Preserved) -->
+      <div class="space-y-4" data-sd-id="7">
+        <h3 class="text-[22px] leading-[30px] font-[650] text-app-text" data-sd-id="8">Blue (主色基础阶梯)</h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-10 gap-4" data-sd-id="9">
+          <!-- 50 -->
+          <div class="space-y-2" data-sd-id="10">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-50" data-sd-id="11"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="12">
+              <div class="text-app-text" data-sd-id="13">blue-50</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="14">#EFF6FF</div>
+            </div>
+          </div>
+          <!-- 100 -->
+          <div class="space-y-2" data-sd-id="15">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-100" data-sd-id="16"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="17">
+              <div class="text-app-text" data-sd-id="18">blue-100</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="19">#DBEAFE</div>
+            </div>
+          </div>
+          <!-- 200 -->
+          <div class="space-y-2" data-sd-id="20">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-200" data-sd-id="21"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="22">
+              <div class="text-app-text" data-sd-id="23">blue-200</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="24">#BFDBFE</div>
+            </div>
+          </div>
+          <!-- 300 -->
+          <div class="space-y-2" data-sd-id="25">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-300" data-sd-id="26"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="27">
+              <div class="text-app-text" data-sd-id="28">blue-300</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="29">#93C5FD</div>
+            </div>
+          </div>
+          <!-- 400 -->
+          <div class="space-y-2" data-sd-id="30">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-400" data-sd-id="31"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="32">
+              <div class="text-app-text" data-sd-id="33">blue-400</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="34">#60A5FA</div>
+            </div>
+          </div>
+          <!-- 500 -->
+          <div class="space-y-2" data-sd-id="35">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-500" data-sd-id="36"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="37">
+              <div class="text-app-text" data-sd-id="38">blue-500</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="39">#3B82F6</div>
+            </div>
+          </div>
+          <!-- 600 -->
+          <div class="space-y-2" data-sd-id="40">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-600" data-sd-id="41"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="42">
+              <div class="text-app-text" data-sd-id="43">blue-600</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="44">#2563EB</div>
+            </div>
+          </div>
+          <!-- 700 -->
+          <div class="space-y-2" data-sd-id="45">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-700" data-sd-id="46"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="47">
+              <div class="text-app-text" data-sd-id="48">blue-700</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="49">#1D4ED8</div>
+            </div>
+          </div>
+          <!-- 800 -->
+          <div class="space-y-2" data-sd-id="50">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-800" data-sd-id="51"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="52">
+              <div class="text-app-text" data-sd-id="53">blue-800</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="54">#1E40AF</div>
+            </div>
+          </div>
+          <!-- 900 -->
+          <div class="space-y-2" data-sd-id="55">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-blue-900" data-sd-id="56"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="57">
+              <div class="text-app-text" data-sd-id="58">blue-900</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="59">#172554</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dark Surface Ladder -->
+      <div class="space-y-4" data-sd-id="60">
+        <h3 class="text-[22px] leading-[30px] font-[650] text-app-text" data-sd-id="61">Dark Surfaces (中性表面阶梯)</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" data-sd-id="62">
+          <div class="space-y-2" data-sd-id="63">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-app-page" data-sd-id="64"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="65">
+              <div class="text-app-text" data-sd-id="66">--app-page</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="67">#0B1220</div>
+            </div>
+          </div>
+          <div class="space-y-2" data-sd-id="68">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-app-surface" data-sd-id="69"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="70">
+              <div class="text-app-text" data-sd-id="71">--app-surface</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="72">#111C2E</div>
+            </div>
+          </div>
+          <div class="space-y-2" data-sd-id="73">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-app-surface-alt" data-sd-id="74"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="75">
+              <div class="text-app-text" data-sd-id="76">--app-surface-alt</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="77">#17243A</div>
+            </div>
+          </div>
+          <div class="space-y-2" data-sd-id="78">
+            <div class="h-16 w-full rounded-lg border border-app-border bg-app-surface-hover" data-sd-id="79"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="80">
+              <div class="text-app-text" data-sd-id="81">--app-surface-hover</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="82">#1D2E47</div>
+            </div>
+          </div>
+          <div class="space-y-2" data-sd-id="83">
+            <div class="h-16 w-full rounded-lg border-t-[8px] border-app-border bg-app-surface" data-sd-id="84"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="85">
+              <div class="text-app-text" data-sd-id="86">--app-border</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="87">#2B3A50</div>
+            </div>
+          </div>
+          <div class="space-y-2" data-sd-id="88">
+            <div class="h-16 w-full rounded-lg border-t-[8px] border-app-border-strong bg-app-surface" data-sd-id="89"></div>
+            <div class="text-[12px] leading-[18px] font-medium" data-sd-id="90">
+              <div class="text-app-text" data-sd-id="91">--app-border-strong</div>
+              <div class="text-app-text-muted font-mono" data-sd-id="92">#41536B</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status & Semantic -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-sd-id="113">
+        <div class="space-y-4" data-sd-id="114">
+          <h3 class="text-[22px] leading-[30px] font-[650] text-app-text" data-sd-id="115">语义化状态</h3>
+          <div class="space-y-3" data-sd-id="116">
+            <div class="flex items-center gap-4 p-3 bg-status-success-bg border border-status-success-border rounded-lg" data-sd-id="117">
+              <iconify-icon icon="lucide:check-circle-2" class="text-status-success text-xl"></iconify-icon>
+              <div class="text-[14px] leading-[22px] font-medium text-status-success" data-sd-id="118">
+                Success (#4ADE80)
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3 bg-status-warning-bg border border-status-warning-border rounded-lg" data-sd-id="119">
+              <iconify-icon icon="lucide:alert-triangle" class="text-status-warning text-xl"></iconify-icon>
+              <div class="text-[14px] leading-[22px] font-medium text-status-warning" data-sd-id="120">
+                Warning (#FBBF24)
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3 bg-status-danger-bg border border-status-danger-border rounded-lg" data-sd-id="121">
+              <iconify-icon icon="lucide:x-circle" class="text-status-danger text-xl"></iconify-icon>
+              <div class="text-[14px] leading-[22px] font-medium text-status-danger" data-sd-id="122">
+                Danger (#F87171)
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-3 bg-status-info-bg border border-status-info-border rounded-lg" data-sd-id="123">
+              <iconify-icon icon="lucide:info" class="text-status-info text-xl"></iconify-icon>
+              <div class="text-[14px] leading-[22px] font-medium text-status-info" data-sd-id="124">
+                Info (#38BDF8)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4" data-sd-id="125">
+          <h3 class="text-[22px] leading-[30px] font-[650] text-app-text" data-sd-id="126">文本层级</h3>
+          <div class="space-y-4 p-6 bg-app-surface border border-app-border rounded-lg shadow-card" data-sd-id="127">
+            <div class="flex items-center justify-between" data-sd-id="128">
+              <span class="text-[16px] leading-[24px] text-app-text font-medium" data-sd-id="129">高强调/标题正文 (--app-text)</span>
+              <span class="text-[12px] font-mono text-app-text-muted" data-sd-id="130">#F1F5F9</span>
+            </div>
+            <div class="flex items-center justify-between" data-sd-id="131">
+              <span class="text-[16px] leading-[24px] text-app-text-secondary" data-sd-id="132">次要文本 (--app-text-secondary)</span>
+              <span class="text-[12px] font-mono text-app-text-muted" data-sd-id="133">#CBD5E1</span>
+            </div>
+            <div class="flex items-center justify-between" data-sd-id="134">
+              <span class="text-[16px] leading-[24px] text-app-text-muted" data-sd-id="135">元数据文本 (--app-text-muted)</span>
+              <span class="text-[12px] font-mono text-app-text-muted" data-sd-id="136">#94A3B8</span>
+            </div>
+            <div class="flex items-center justify-between" data-sd-id="143">
+              <span class="text-[16px] leading-[24px] text-app-text-disabled" data-sd-id="144">禁用文本 (--app-text-disabled)</span>
+              <span class="text-[12px] font-mono text-app-text-muted" data-sd-id="145">#64748B</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="space-y-8" data-sd-id="146">
+      <h2 class="text-[28px] leading-[36px] font-bold text-app-text border-b border-app-border pb-4" data-sd-id="147">
+        排版规范
+      </h2>
+      <div class="overflow-x-auto" data-sd-id="148">
+        <table class="w-full text-left border-collapse" data-sd-id="149">
+          <thead data-sd-id="150">
+            <tr class="border-b border-app-border" data-sd-id="151">
+              <th class="py-3 px-4 text-[14px] leading-[22px] font-medium text-app-text-muted w-1/4" data-sd-id="152">层级</th>
+              <th class="py-3 px-4 text-[14px] leading-[22px] font-medium text-app-text-muted w-1/4" data-sd-id="153">字号 / 行高 / 字重</th>
+              <th class="py-3 px-4 text-[14px] leading-[22px] font-medium text-app-text-muted w-1/2" data-sd-id="154">预览</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-app-border" data-sd-id="155">
+            <tr data-sd-id="156">
+              <td class="py-6 px-4 text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="157">Display</td>
+              <td class="py-6 px-4 text-[14px] font-mono text-app-text-muted" data-sd-id="158">36px / 44px / 700</td>
+              <td class="py-6 px-4" data-sd-id="159">
+                <span class="text-[36px] leading-[44px] font-bold text-app-text" data-sd-id="160">系统仪表盘</span>
+              </td>
+            </tr>
+            <tr data-sd-id="161">
+              <td class="py-6 px-4 text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="162">Page title</td>
+              <td class="py-6 px-4 text-[14px] font-mono text-app-text-muted" data-sd-id="163">28px / 36px / 700</td>
+              <td class="py-6 px-4" data-sd-id="164">
+                <span class="text-[28px] leading-[36px] font-bold text-app-text" data-sd-id="165">用户管理列表</span>
+              </td>
+            </tr>
+            <tr data-sd-id="166">
+              <td class="py-6 px-4 text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="167">Section title</td>
+              <td class="py-6 px-4 text-[14px] font-mono text-app-text-muted" data-sd-id="168">22px / 30px / 650</td>
+              <td class="py-6 px-4" data-sd-id="169">
+                <span class="text-[22px] leading-[30px] font-[650] text-app-text" data-sd-id="170">账户基本信息</span>
+              </td>
+            </tr>
+            <tr data-sd-id="171">
+              <td class="py-6 px-4 text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="172">Subheading</td>
+              <td class="py-6 px-4 text-[14px] font-mono text-app-text-muted" data-sd-id="173">18px / 26px / 600</td>
+              <td class="py-6 px-4" data-sd-id="174">
+                <span class="text-[18px] leading-[26px] font-semibold text-app-text" data-sd-id="175">权限设置分配</span>
+              </td>
+            </tr>
+            <tr data-sd-id="176">
+              <td class="py-6 px-4 text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="177">Body</td>
+              <td class="py-6 px-4 text-[14px] font-mono text-app-text-muted" data-sd-id="178">16px / 24px / 400</td>
+              <td class="py-6 px-4" data-sd-id="179">
+                <span class="text-[16px] leading-[24px] font-normal text-app-text" data-sd-id="180">在此处查看和编辑用户的基本信息，所有的更改将在保存后立即生效。</span>
+              </td>
+            </tr>
+            <tr data-sd-id="181">
+              <td class="py-6 px-4 text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="182">UI control / table</td>
+              <td class="py-6 px-4 text-[14px] font-mono text-app-text-muted" data-sd-id="183">14px / 22px / 500</td>
+              <td class="py-6 px-4" data-sd-id="184">
+                <span class="text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="185">确认提交表单内容</span>
+              </td>
+            </tr>
+            <tr data-sd-id="186">
+              <td class="py-6 px-4 text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="187">Caption / helper</td>
+              <td class="py-6 px-4 text-[14px] font-mono text-app-text-muted" data-sd-id="188">12px / 18px / 500</td>
+              <td class="py-6 px-4" data-sd-id="189">
+                <span class="text-[12px] leading-[18px] font-medium text-app-text-muted" data-sd-id="190">密码必须至少包含 8 个字符。</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Components & Interactions -->
+    <section class="space-y-8" data-sd-id="191">
+      <h2 class="text-[28px] leading-[36px] font-bold text-app-text border-b border-app-border pb-4" data-sd-id="192">
+        组件与交互状态
+      </h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12" data-sd-id="193">
+        <!-- Buttons -->
+        <div class="space-y-6" data-sd-id="194">
+          <h3 class="text-[18px] leading-[26px] font-semibold text-app-text" data-sd-id="195">按钮 Buttons</h3>
+          <div class="space-y-4" data-sd-id="196">
+            <div class="flex flex-wrap items-center gap-4" data-sd-id="197">
+              <button class="px-4 py-2 bg-app-primary text-app-on-primary text-[14px] leading-[22px] font-medium rounded-lg hover:bg-app-primary-hover active:bg-app-primary-active focus:outline-none focus:ring-2 focus:ring-app-focus focus:ring-offset-2 focus:ring-offset-app-page transition-colors" data-sd-id="198">
+                主要按钮 Primary
+              </button>
+              <button class="px-4 py-2 bg-app-surface text-app-text text-[14px] leading-[22px] font-medium rounded-lg border border-app-border hover:bg-app-surface-hover hover:border-app-border-strong focus:outline-none focus:ring-2 focus:ring-app-focus focus:ring-offset-2 focus:ring-offset-app-page transition-colors" data-sd-id="199">
+                次要按钮 Secondary
+              </button>
+              <button class="px-4 py-2 bg-app-surface text-status-danger text-[14px] leading-[22px] font-medium rounded-lg border border-app-border hover:bg-status-danger-bg hover:border-status-danger-border transition-colors" data-sd-id="200">
+                危险操作 Destructive
+              </button>
+            </div>
+            <div class="flex flex-wrap items-center gap-4" data-sd-id="201">
+              <button disabled="" class="px-4 py-2 bg-app-surface text-app-text-disabled text-[14px] leading-[22px] font-medium rounded-lg border border-app-border cursor-not-allowed opacity-70" data-sd-id="202">
+                禁用主要 Disabled
+              </button>
+              <a href="#" id="link-example" class="text-[14px] leading-[22px] font-medium text-app-primary hover:text-app-primary-hover hover:underline focus:underline focus:outline-none rounded" data-sd-id="203">
+                文字链接 Link
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inputs -->
+        <div class="space-y-6" data-sd-id="204">
+          <h3 class="text-[18px] leading-[26px] font-semibold text-app-text" data-sd-id="205">输入框 Inputs</h3>
+          <div class="space-y-4 max-w-sm" data-sd-id="206">
+            <div class="space-y-1" data-sd-id="207">
+              <label class="block text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="208">默认状态 Default</label>
+              <input type="text" placeholder="请输入用户名" class="w-full px-3 py-2 bg-app-surface border border-app-border rounded-lg text-[14px] leading-[22px] text-app-text placeholder:text-app-text-muted focus:outline-none focus:border-app-focus focus:ring-1 focus:ring-app-focus transition-shadow" data-sd-id="209">
+            </div>
+            <div class="space-y-1" data-sd-id="210">
+              <label class="block text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="211">错误状态 Error</label>
+              <input type="password" value="wrongpassword" class="w-full px-3 py-2 bg-app-surface border border-status-danger rounded-lg text-[14px] leading-[22px] text-app-text focus:outline-none focus:ring-1 focus:ring-status-danger transition-shadow" data-sd-id="212">
+              <p class="text-[12px] leading-[18px] font-medium text-status-danger" data-sd-id="213">密码验证失败，请重试。</p>
+            </div>
+            <div class="space-y-1" data-sd-id="214">
+              <label class="block text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="215">禁用状态 Disabled</label>
+              <input type="text" value="system_admin" disabled="" class="w-full px-3 py-2 bg-app-page border border-app-border rounded-lg text-[14px] leading-[22px] text-app-text-disabled cursor-not-allowed" data-sd-id="216">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Preview -->
+    <section class="space-y-8" data-sd-id="217">
+      <h2 class="text-[28px] leading-[36px] font-bold text-app-text border-b border-app-border pb-4" data-sd-id="218">
+        综合界面预览
+      </h2>
+      
+      <div class="bg-app-surface rounded-[14px] shadow-card border border-app-border overflow-hidden" data-sd-id="219">
+        <!-- Preview Header / Tabs -->
+        <div class="border-b border-app-border px-6 py-4 flex items-center justify-between bg-app-surface-alt" data-sd-id="220">
+          <div class="flex items-center space-x-6" data-sd-id="221">
+            <div class="text-[18px] leading-[26px] font-semibold text-app-text" data-sd-id="222">
+              课程资源管理
+            </div>
+            <nav class="hidden md:flex space-x-1" data-sd-id="223">
+              <button class="px-3 py-1.5 text-[14px] leading-[22px] font-medium text-app-primary bg-app-surface-hover rounded-md transition-colors" data-sd-id="224">
+                全部课程
+              </button>
+              <button class="px-3 py-1.5 text-[14px] leading-[22px] font-medium text-app-text-secondary hover:text-app-text hover:bg-app-surface-hover rounded-md transition-colors" data-sd-id="225">
+                待审核
+              </button>
+              <button class="px-3 py-1.5 text-[14px] leading-[22px] font-medium text-app-text-secondary hover:text-app-text hover:bg-app-surface-hover rounded-md transition-colors" data-sd-id="226">
+                已下架
+              </button>
+            </nav>
+          </div>
+          <div class="flex items-center space-x-3" data-sd-id="227">
+            <div class="relative" data-sd-id="228">
+              <iconify-icon icon="lucide:search" class="absolute left-3 top-1/2 -translate-y-1/2 text-app-text-muted"></iconify-icon>
+              <input type="text" placeholder="搜索课程..." class="pl-9 pr-3 py-1.5 w-48 bg-app-surface border border-app-border rounded-lg text-[14px] leading-[22px] text-app-text placeholder:text-app-text-muted focus:outline-none focus:border-app-focus focus:ring-1 focus:ring-app-focus" data-sd-id="229">
+            </div>
+            <button class="px-4 py-1.5 bg-app-primary text-app-on-primary text-[14px] leading-[22px] font-medium rounded-lg hover:bg-app-primary-hover transition-colors flex items-center gap-2" data-sd-id="230">
+              <iconify-icon icon="lucide:plus"></iconify-icon>
+              新建课程
+            </button>
+          </div>
+        </div>
+
+        <!-- Preview Table -->
+        <div class="overflow-x-auto" data-sd-id="231">
+          <table class="w-full text-left" data-sd-id="232">
+            <thead class="bg-app-surface border-b border-app-border" data-sd-id="233">
+              <tr data-sd-id="234">
+                <th class="py-3 px-6 text-[12px] leading-[18px] font-medium text-app-text-muted uppercase tracking-wider" data-sd-id="235">课程名称</th>
+                <th class="py-3 px-6 text-[12px] leading-[18px] font-medium text-app-text-muted uppercase tracking-wider" data-sd-id="236">分类</th>
+                <th class="py-3 px-6 text-[12px] leading-[18px] font-medium text-app-text-muted uppercase tracking-wider" data-sd-id="237">状态</th>
+                <th class="py-3 px-6 text-[12px] leading-[18px] font-medium text-app-text-muted uppercase tracking-wider" data-sd-id="238">最后更新</th>
+                <th class="py-3 px-6 text-[12px] leading-[18px] font-medium text-app-text-muted uppercase tracking-wider text-right" data-sd-id="239">操作</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-app-border" data-sd-id="240">
+              <tr class="hover:bg-app-surface-hover transition-colors group" data-sd-id="241">
+                <td class="py-4 px-6" data-sd-id="242">
+                  <div class="text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="243">Vue 3 企业级后台开发实战</div>
+                  <div class="text-[12px] leading-[18px] text-app-text-muted" data-sd-id="244">讲师：张三丰</div>
+                </td>
+                <td class="py-4 px-6" data-sd-id="245">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-app-surface-alt text-app-text-secondary" data-sd-id="246">
+                    前端开发
+                  </span>
+                </td>
+                <td class="py-4 px-6" data-sd-id="247">
+                  <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[12px] font-medium bg-status-success-bg text-status-success border border-status-success-border" data-sd-id="248">
+                    <span class="w-1.5 h-1.5 rounded-full bg-status-success" data-sd-id="249"></span>
+                    已发布
+                  </span>
+                </td>
+                <td class="py-4 px-6 text-[14px] leading-[22px] text-app-text-secondary font-mono" data-sd-id="250">
+                  2024-05-20
+                </td>
+                <td class="py-4 px-6 text-right" data-sd-id="251">
+                  <button class="text-[14px] font-medium text-app-primary hover:text-app-primary-hover hover:underline mr-3" data-sd-id="252">编辑</button>
+                  <button class="text-[14px] font-medium text-status-danger hover:opacity-80 hover:underline" data-sd-id="253">下架</button>
+                </td>
+              </tr>
+              <tr class="hover:bg-app-surface-hover transition-colors group" data-sd-id="254">
+                <td class="py-4 px-6" data-sd-id="255">
+                  <div class="text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="256">Tailwind CSS 进阶指南</div>
+                  <div class="text-[12px] leading-[18px] text-app-text-muted" data-sd-id="257">讲师：李四</div>
+                </td>
+                <td class="py-4 px-6" data-sd-id="258">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-app-surface-alt text-app-text-secondary" data-sd-id="259">
+                    UI 设计
+                  </span>
+                </td>
+                <td class="py-4 px-6" data-sd-id="260">
+                  <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[12px] font-medium bg-status-warning-bg text-status-warning border border-status-warning-border" data-sd-id="261">
+                    <span class="w-1.5 h-1.5 rounded-full bg-status-warning" data-sd-id="262"></span>
+                    审核中
+                  </span>
+                </td>
+                <td class="py-4 px-6 text-[14px] leading-[22px] text-app-text-secondary font-mono" data-sd-id="263">
+                  2024-05-18
+                </td>
+                <td class="py-4 px-6 text-right" data-sd-id="264">
+                  <button class="text-[14px] font-medium text-app-primary hover:text-app-primary-hover hover:underline mr-3" data-sd-id="265">编辑</button>
+                  <button class="text-[14px] font-medium text-status-danger hover:opacity-80 hover:underline" data-sd-id="266">下架</button>
+                </td>
+              </tr>
+              <tr class="hover:bg-app-surface-hover transition-colors group" data-sd-id="267">
+                <td class="py-4 px-6" data-sd-id="268">
+                  <div class="text-[14px] leading-[22px] font-medium text-app-text" data-sd-id="269">Node.js 性能调优</div>
+                  <div class="text-[12px] leading-[18px] text-app-text-muted" data-sd-id="270">讲师：王五</div>
+                </td>
+                <td class="py-4 px-6" data-sd-id="271">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[12px] font-medium bg-app-surface-alt text-app-text-secondary" data-sd-id="272">
+                    后端开发
+                  </span>
+                </td>
+                <td class="py-4 px-6" data-sd-id="273">
+                  <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[12px] font-medium bg-app-surface-alt text-app-text-muted border border-app-border" data-sd-id="274">
+                    <span class="w-1.5 h-1.5 rounded-full bg-app-text-muted" data-sd-id="275"></span>
+                    草稿
+                  </span>
+                </td>
+                <td class="py-4 px-6 text-[14px] leading-[22px] text-app-text-secondary font-mono" data-sd-id="276">
+                  2024-05-10
+                </td>
+                <td class="py-4 px-6 text-right" data-sd-id="277">
+                  <button class="text-[14px] font-medium text-app-primary hover:text-app-primary-hover hover:underline mr-3" data-sd-id="278">编辑</button>
+                  <button class="text-[14px] font-medium text-status-danger hover:opacity-80 hover:underline disabled:opacity-50" disabled="" data-sd-id="279">下架</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Pagination Mock -->
+        <div class="border-t border-app-border px-6 py-4 flex items-center justify-between bg-app-surface rounded-b-[14px]" data-sd-id="280">
+          <div class="text-[14px] leading-[22px] text-app-text-muted" data-sd-id="281">
+            显示 1 到 3 条，共 45 条
+          </div>
+          <div class="flex space-x-2" data-sd-id="282">
+            <button class="px-3 py-1 border border-app-border rounded text-[14px] font-medium text-app-text-disabled bg-app-page cursor-not-allowed" disabled="" data-sd-id="283">上一页</button>
+            <button class="px-3 py-1 border border-app-border rounded text-[14px] font-medium text-app-text-secondary hover:bg-app-surface-hover" data-sd-id="284">1</button>
+            <button class="px-3 py-1 border border-app-primary bg-app-surface-hover rounded text-[14px] font-medium text-app-primary" data-sd-id="285">2</button>
+            <button class="px-3 py-1 border border-app-border rounded text-[14px] font-medium text-app-text-secondary hover:bg-app-surface-hover" data-sd-id="286">3</button>
+            <button class="px-3 py-1 border border-app-border rounded text-[14px] font-medium text-app-text-secondary hover:bg-app-surface-hover" data-sd-id="287">下一页</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>

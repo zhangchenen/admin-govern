@@ -1,0 +1,4 @@
+allowBuilds:
+  '@parcel/watcher': false
+minimumReleaseAgeExclude:
+  - lint-staged@17.6.0

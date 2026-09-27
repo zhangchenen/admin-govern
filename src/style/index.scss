@@ -1,0 +1,62 @@
+:root {
+  --app-primary: #2563eb;
+  --app-primary-hover: #1d4ed8;
+  --app-primary-active: #1e40af;
+  --app-primary-soft: #eff6ff;
+  --app-page: #f4f8ff;
+  --app-surface: #ffffff;
+  --app-text: #1e293b;
+  --app-text-secondary: #64748b;
+  --app-border: #dbe7f5;
+  --app-focus: rgb(37 99 235 / 18%);
+
+  --el-color-primary: var(--app-primary);
+}
+
+html {
+  box-sizing: border-box;
+  min-width: 320px;
+  min-height: 100%;
+  font-family:
+    Inter, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC', system-ui,
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--app-text);
+  background: var(--app-page);
+}
+
+#app {
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+.clearfix {
+  &::after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+    height: 0;
+  }
+}

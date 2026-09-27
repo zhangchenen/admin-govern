@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>mask-size 交互实验室</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f3f7ff;
+      color: #172744;
+      --sample-width: 320px;
+      --sample-height: 180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 88% 6%, #c4dcff 0, transparent 27rem),
+        radial-gradient(circle at 0% 70%, #e1eeff 0, transparent 30rem),
+        #f3f7ff;
+    }
+
+    .page { max-width: 1220px; margin: 0 auto; padding: 52px 28px 80px; }
+    .eyebrow { margin: 0 0 12px; color: #2668d8; font-size: 12px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(32px, 5vw, 54px); line-height: 1.1; letter-spacing: -.045em; }
+    .intro { max-width: 740px; margin: 18px 0 32px; color: #5c6d89; font-size: 16px; line-height: 1.75; }
+    .highlight { color: #175bc8; font-weight: 700; }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 28px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      background: #fff;
+      border: 1px solid #dce8f8;
+      border-radius: 18px;
+      box-shadow: 0 10px 34px #2b62ad0b;
+    }
+
+    .control-label { margin-right: 6px; font-weight: 750; }
+    .range-wrap { display: flex; align-items: center; gap: 10px; color: #596b85; font-size: 14px; }
+    .range-wrap span { min-width: 28px; }
+    .range-wrap output { min-width: 44px; color: #1e4c9b; font-variant-numeric: tabular-nums; font-weight: 700; }
+    input[type="range"] { width: 120px; accent-color: #2563eb; cursor: pointer; }
+    .controls-note { margin-left: auto; color: #7d8da5; font-size: 13px; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card { min-width: 0; background: #fff; border: 1px solid #dce8f8; border-radius: 20px; overflow: hidden; box-shadow: 0 12px 36px #2b62ad0c; }
+    .card-head { padding: 22px 22px 17px; }
+    .card-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    h2 { margin: 0; font-size: 23px; letter-spacing: -.03em; }
+    .badge { padding: 6px 9px; color: #1c5cc4; background: #ecf4ff; border-radius: 8px; font-size: 12px; font-weight: 750; white-space: nowrap; }
+    .card p { margin: 10px 0 0; color: #687a94; font-size: 13px; line-height: 1.6; min-height: 42px; }
+
+    .stage {
+      display: grid;
+      place-items: center;
+      min-height: 338px;
+      padding: 16px;
+      background-color: #f8fbff;
+      background-image: linear-gradient(#dbe7f670 1px, transparent 1px), linear-gradient(90deg, #dbe7f670 1px, transparent 1px);
+      background-size: 20px 20px;
+      border-block: 1px solid #e9f0fa;
+      overflow: hidden;
+    }
+
+    .canvas {
+      position: relative;
+      width: var(--sample-width);
+      height: var(--sample-height);
+      max-width: 100%;
+      background: #eaf1fd;
+      border: 1px dashed #87a7d6;
+      border-radius: 3px;
+      overflow: hidden;
+      transition: width .18s ease, height .18s ease;
+    }
+
+    .sample {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #0d45b5 4%, #287cf7 50%, #65c8ff 100%);
+      -webkit-mask-image: var(--demo-mask);
+      mask-image: var(--demo-mask);
+      -webkit-mask-repeat: no-repeat;
+      mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+      mask-position: center;
+    }
+
+    .sample-auto { -webkit-mask-size: auto; mask-size: auto; }
+    .sample-contain { -webkit-mask-size: contain; mask-size: contain; }
+    .sample-cover { -webkit-mask-size: cover; mask-size: cover; }
+
+    .card-foot { padding: 17px 22px 21px; }
+    code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+    .code-line { display: block; padding: 11px 12px; background: #10294e; color: #e8f2ff; border-radius: 9px; font-size: 13px; overflow-x: auto; }
+    .card-foot small { display: block; margin-top: 10px; color: #71829a; font-size: 12px; }
+
+    .explain {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-top: 24px;
+      padding: 20px 24px;
+      border: 1px solid #dce8f8;
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .source-preview { display: flex; align-items: center; gap: 12px; }
+    .source-art { display: grid; place-items: center; width: 64px; height: 96px; border: 1px dashed #8fb1e0; background: #ecf4ff; }
+    .source-art svg { width: 100%; height: 100%; }
+    .source-preview strong { font-size: 13px; line-height: 1.5; }
+    .source-preview small { display: block; color: #71829a; font-weight: 400; }
+    .explain p { margin: 0; color: #566985; line-height: 1.75; font-size: 14px; }
+
+    @media (max-width: 1050px) {
+      .cards { grid-template-columns: 1fr; }
+      .stage { min-height: 300px; }
+      .card p { min-height: 0; }
+      .controls-note { width: 100%; margin-left: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .page { padding: 32px 16px 50px; }
+      .controls { padding: 16px; }
+      .range-wrap { width: 100%; justify-content: space-between; }
+      input[type="range"] { flex: 1; width: auto; }
+      .explain { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <p class="eyebrow">CSS MASK / 交互实验</p>
+    <h1>mask-size 到底控制什么？</h1>
+    <p class="intro">下面三块蓝色使用<span class="highlight">同一张竖向遮罩图</span>。拖动宽高滑块，观察遮罩如何适应虚线画布。蓝色来自元素的背景；遮罩只决定哪些位置能看见。</p>
+
+    <div class="controls" aria-label="画布尺寸控制">
+      <span class="control-label">调整画布</span>
+      <label class="range-wrap">宽 <input id="width" type="range" min="160" max="340" value="320"> <output id="width-value" for="width">320px</output></label>
+      <label class="range-wrap">高 <input id="height" type="range" min="140" max="300" value="180"> <output id="height-value" for="height">180px</output></label>
+      <span class="controls-note">遮罩原始尺寸：200 × 300 px</span>
+    </div>
+
+    <section class="cards" aria-label="三种 mask-size 值的对比">
+      <article class="card">
+        <div class="card-head">
+          <div class="card-title"><h2>auto</h2><span class="badge">原始大小</span></div>
+          <p>尽量保持遮罩原本的 200 × 300 尺寸；超出画布的部分看不到。</p>
+        </div>
+        <div class="stage"><div class="canvas"><div class="sample sample-auto"></div></div></div>
+        <div class="card-foot"><code class="code-line">mask-auto</code><small>CSS：mask-size: auto;</small></div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="card-title"><h2>contain</h2><span class="badge">完整显示</span></div>
+          <p>等比例缩放到整个遮罩都能放进画布，可能在两边留下空白。</p>
+        </div>
+        <div class="stage"><div class="canvas"><div class="sample sample-contain"></div></div></div>
+        <div class="card-foot"><code class="code-line">mask-contain</code><small>CSS：mask-size: contain;</small></div>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <div class="card-title"><h2>cover</h2><span class="badge">铺满画布</span></div>
+          <p>等比例放大到遮罩覆盖整个画布；遮罩上下可能被裁掉。</p>
+        </div>
+        <div class="stage"><div class="canvas"><div class="sample sample-cover"></div></div></div>
+        <div class="card-foot"><code class="code-line">mask-cover</code><small>CSS：mask-size: cover;</small></div>
+      </article>
+    </section>
+
+    <aside class="explain">
+      <div class="source-preview">
+        <div class="source-art" aria-hidden="true">
+          <svg viewBox="0 0 200 300" fill="#2563eb" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="55" r="38"/><path d="M70 110h60v80H70z"/><circle cx="100" cy="240" r="42"/>
+          </svg>
+        </div>
+        <strong>原始遮罩图<small>200 × 300，竖向排列的圆、方块、圆</small></strong>
+      </div>
+      <p>关键区别：<strong>contain 保证图形完整</strong>，<strong>cover 保证遮罩覆盖画布</strong>。遮罩是“镂空模板”，你看到的浅蓝底色属于画布，不是遮罩里的颜色。实际项目中，<code>mask-size</code> 通常会和 <code>mask-image</code>、<code>mask-repeat</code>、<code>background-color</code> 一起使用。</p>
+    </aside>
+  </main>
+
+  <script>
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="200" height="300" viewBox="0 0 200 300"><circle cx="100" cy="55" r="38" fill="white"/><path d="M70 110h60v80H70z" fill="white"/><circle cx="100" cy="240" r="42" fill="white"/></svg>';
+    document.documentElement.style.setProperty('--demo-mask', `url("data:image/svg+xml,${encodeURIComponent(svg)}")`);
+
+    for (const dimension of ['width', 'height']) {
+      const input = document.getElementById(dimension);
+      const output = document.getElementById(`${dimension}-value`);
+      input.addEventListener('input', () => {
+        const value = `${input.value}px`;
+        document.documentElement.style.setProperty(`--sample-${dimension}`, value);
+        output.value = value;
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,35 +1,14 @@
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+@import 'tailwindcss';
+/* 定义自己的主题 */
+@theme inline {
+  --color-primary: var(--app-primary);
+  --color-primary-hover: var(--app-primary-hover);
+  --color-page: var(--app-page);
+  --color-surface: var(--app-surface);
+  --color-foreground: var(--app-text);
+  --color-muted: var(--app-text-secondary);
+  --color-border: var(--app-border);
 }
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
+/* tailwindcss会将--color-进行解析，
+用工具类来代替，比如你要使用tailwind设置背景颜色，
+就直接用tailwind写好的bg-primary即可，会自动应用--color-primary 这套颜色*/
