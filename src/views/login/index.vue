@@ -1,5 +1,5 @@
 <template>
-  <main class="login-page">
+  <main class="login-page" v-loading="loading" element-loading-text="加载中">
     <div class="login-orbit login-orbit--top" aria-hidden="true"></div>
     <div class="login-orbit login-orbit--bottom" aria-hidden="true"></div>
 
@@ -24,7 +24,7 @@
       >
         <el-form-item label="账号" prop="name">
           <el-input
-            v-model="form.name"
+            v-model="form.username"
             :prefix-icon="User"
             placeholder="请输入账号"
             autocomplete="username"
@@ -65,19 +65,31 @@ defineOptions({
 import { reactive, ref } from 'vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { Lock, User } from '@element-plus/icons-vue'
-
+import type { userLoginInfo } from '@/views/login/type'
+import { useUserStore } from '@/stores/user'
 const formRef = ref<FormInstance>()
-const form = reactive({ name: '', password: '' })
+const form: userLoginInfo = reactive({ username: '', password: '' })
 const rules: FormRules = {
-  name: [{ required: true, message: '请输入账号', trigger: 'blur' }],
+  username: [{ required: true, message: '请输入账号', trigger: 'blur' }],
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
 }
-
+const loading = ref(false)
+const userStore = useUserStore()
 const handleSubmit = () => {
   if (!formRef.value) return
 
   formRef.value.validate((valid) => {
-    if (valid) ElMessage.info('登录接口尚未接入')
+    if (!valid) return
+    loading.value = true
+    userStore
+      .login(form)
+      .then(() => {
+        loading.value = false
+        ElMessage.success('登录成功')
+      })
+      .catch(() => {
+        loading.value = false
+      })
   })
 }
 </script>
