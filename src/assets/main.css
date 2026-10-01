@@ -8,6 +8,12 @@
   --color-foreground: var(--app-text);
   --color-muted: var(--app-text-secondary);
   --color-border: var(--app-border);
+  --color-on-primary: var(--app-on-primary);
+  --color-sidebar: var(--app-sidebar-bg);
+  --color-sidebar-text: var(--app-sidebar-text);
+  --color-sidebar-hover: var(--app-sidebar-hover);
+  --color-sidebar-active: var(--app-sidebar-active);
+  --color-sidebar-active-hover: var(--app-sidebar-active-hover);
 }
 /* tailwindcss会将--color-进行解析，
 用工具类来代替，比如你要使用tailwind设置背景颜色，

@@ -1,9 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <script>
+      // 这段普通脚本在 Vue 和样式加载前运行，避免刷新时先显示默认主题。
+      try {
+        // Pinia 持久化插件以 Store ID「theme」为键，保存两个主题字段。
+        const saved = JSON.parse(localStorage.getItem('theme') || '{}')
+        // html 是全部 CSS 变量的共同祖先，因此从这里恢复主题。
+        const root = document.documentElement
+        // classList.toggle 的第二个参数明确指定要添加还是移除 dark 类。
+        root.classList.toggle('dark', saved?.theme === 'dark')
+        // 只恢复合法的不透明十六进制色，避免错误存储值进入 CSS。
+        if (typeof saved?.primaryColor === 'string' && /^#[0-9a-f]{6}$/i.test(saved.primaryColor)) {
+          // 保存的主色要在首屏绘制前写入，否则会先闪现默认蓝色。
+          root.style.setProperty('--app-primary', saved.primaryColor)
+          // Element Plus 有少量样式使用逗号分隔的 RGB 通道，也同步恢复。
+          const channels = [1, 3, 5].map((start) =>
+            Number.parseInt(saved.primaryColor.slice(start, start + 2), 16),
+          )
+          // 逗号分隔格式与组件库的 --el-color-primary-rgb 约定一致。
+          root.style.setProperty('--el-color-primary-rgb', channels.join(', '))
+          // sRGB 通道先转线性值，才能按人眼感知计算相对亮度。
+          const linear = channels.map((channel) => {
+            // 分段公式对应 sRGB 的非线性编码。
+            const normalized = channel / 255
+            // 小数值走线性段，其余值按指数转换。
+            return normalized <= 0.04045
+              ? normalized / 12.92
+              : ((normalized + 0.055) / 1.055) ** 2.4
+          })
+          // WCAG 相对亮度中绿色权重最大。
+          const luminance = linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722
+          // 从白字和黑字中选择对比度更高的颜色，亮黄等主色也能看清按钮文字。
+          const onPrimary =
+            1.05 / (luminance + 0.05) >= (luminance + 0.05) / 0.05 ? '#ffffff' : '#000000'
+          // 在首屏绘制前恢复按钮文字颜色，避免短暂的低对比度状态。
+          root.style.setProperty('--app-on-primary', onPrimary)
+          // 侧栏在暗色模式下先压暗 25%；文字要依据压暗后的背景重新选择。
+          const sidebarChannels = channels.map((channel) =>
+            Math.round(channel * (saved?.theme === 'dark' ? 0.75 : 1)),
+          )
+          root.style.setProperty(
+            '--app-sidebar-bg',
+            `#${sidebarChannels.map((channel) => channel.toString(16).padStart(2, '0')).join('')}`,
+          )
+          const sidebarLinear = sidebarChannels.map((channel) => {
+            const normalized = channel / 255
+            return normalized <= 0.04045
+              ? normalized / 12.92
+              : ((normalized + 0.055) / 1.055) ** 2.4
+          })
+          const sidebarLuminance =
+            sidebarLinear[0] * 0.2126 + sidebarLinear[1] * 0.7152 + sidebarLinear[2] * 0.0722
+          root.style.setProperty(
+            '--app-sidebar-text',
+            1.05 / (sidebarLuminance + 0.05) >= (sidebarLuminance + 0.05) / 0.05
+              ? '#ffffff'
+              : '#000000',
+          )
+          // Vue 挂载前，Theme Store 会进一步检查遮罩状态并统一最终文字色。
+        }
+      } catch {
+        // 浏览器存储不可用或数据损坏时回到默认浅色主题。
+        document.documentElement.classList.remove('dark')
+      }
+    </script>
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite App</title>
   </head>
   <body>

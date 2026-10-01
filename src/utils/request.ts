@@ -1,14 +1,36 @@
 import axios, { type AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'
-
+import { useUserStore } from '@/stores/user'
+import { isCheckTimeout } from './auth'
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 5000,
 })
-service.interceptors.request.use((config) => {
-  config.headers.icode = 'helloqianduanxunlianying'
-  return config
-})
+service.interceptors.request.use(
+  (config) => {
+    const userStore = useUserStore()
+
+    config.headers.icode = 'helloqianduanxunlianying'
+    if (userStore.token) {
+      config.headers.Authorization = `Bearer ${userStore.token}`
+      if (isCheckTimeout()) {
+        userStore.logout()
+        ElMessage.warning('用户登录过期，请重新登录')
+        return Promise.reject(new Error('token失效'))
+      }
+    }
+
+    return config
+  },
+  (error) => {
+    const userStore = useUserStore()
+    if (error.response && error.response.data && error.response.data.code === 401) {
+      userStore.logout()
+    }
+    ElMessage.error(error.message)
+    return Promise.reject(error)
+  },
+)
 service.interceptors.response.use(
   (response) => {
     const { message, success, data } = response.data

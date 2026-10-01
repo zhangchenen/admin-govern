@@ -1,0 +1,160 @@
+// html:root 比组件库的 :root 更具体，确保我们定义的 Element Plus 主题变量优先。
+html:root {
+  --app-primary: #2563eb;
+  --app-on-primary: #ffffff; // 主色上的文字；选色后由 Store 根据对比度更新。
+  // 侧边栏独立配色；Store 根据真实背景和各交互状态更新这些变量。
+  --app-sidebar-bg: var(--app-primary);
+  --app-sidebar-text: var(--app-on-primary);
+  --app-sidebar-hover: rgb(0 0 0 / 10%);
+  --app-sidebar-active: rgb(0 0 0 / 20%);
+  --app-sidebar-active-hover: rgb(0 0 0 / 26%);
+  --app-primary-hover: color-mix(in srgb, var(--app-primary) 82%, black); // 悬停时加深主色。
+  --app-primary-active: color-mix(in srgb, var(--app-primary) 72%, black); // 按下时进一步加深。
+  --app-primary-soft: color-mix(in srgb, var(--app-primary) 10%, white); // 浅色强调背景。
+  --app-primary-text: color-mix(
+    in srgb,
+    var(--app-primary) 40%,
+    black
+  ); // 确保浅色页面上的品牌文字够深。
+  --app-page: color-mix(in srgb, var(--app-primary) 3%, white); // 页面底色只带少量主题色。
+  --app-page-highlight: color-mix(in srgb, var(--app-primary) 1%, white); // 渐变亮端。
+  --app-page-tint: color-mix(in srgb, var(--app-primary) 7%, white); // 渐变暗端。
+  --app-page-glow-start: color-mix(
+    in srgb,
+    var(--app-primary) 20%,
+    transparent
+  ); // 装饰光晕随主色变化。
+  --app-page-glow-end: color-mix(in srgb, var(--app-primary) 12%, transparent); // 第二层光晕更淡。
+  --app-surface: #ffffff;
+  --app-text: #1e293b;
+  --app-text-secondary: #64748b;
+  --app-label-text: #334155;
+  --app-placeholder: #94a3b8;
+  --app-border: color-mix(in srgb, var(--app-primary) 12%, #e5e7eb); // 常规边框保持低饱和。
+  --app-decoration-border: color-mix(in srgb, var(--app-primary) 16%, transparent); // 外圈装饰线。
+  --app-decoration-border-inner: color-mix(
+    in srgb,
+    var(--app-primary) 12%,
+    transparent
+  ); // 内圈装饰线。
+  --app-card-border: color-mix(in srgb, var(--app-primary) 25%, #e5e7eb); // 登录卡片边框。
+  --app-card-shadow:
+    0 28px 72px color-mix(in srgb, var(--app-primary) 10%, transparent),
+    0 4px 14px rgb(15 23 42 / 4%); // 卡片阴影略带主色。
+  --app-input-hover-border: color-mix(in srgb, var(--app-primary) 60%, white); // 输入框悬停色。
+  --app-button-shadow: 0 8px 18px color-mix(in srgb, var(--app-primary) 18%, transparent); // 按钮阴影。
+  --app-button-hover-shadow: 0 10px 22px color-mix(in srgb, var(--app-primary) 24%, transparent); // 悬停阴影。
+  --app-focus: color-mix(in srgb, var(--app-primary) 18%, transparent); // 键盘焦点光环。
+  --el-color-primary: var(--app-primary); // Element Plus 的主色入口。
+  --el-color-primary-light-3: color-mix(
+    in srgb,
+    var(--app-primary) 70%,
+    white
+  ); // 组件库浅色级别 3。
+  --el-color-primary-light-5: color-mix(
+    in srgb,
+    var(--app-primary) 50%,
+    white
+  ); // 组件库浅色级别 5。
+  --el-color-primary-light-7: color-mix(
+    in srgb,
+    var(--app-primary) 30%,
+    white
+  ); // 组件库浅色级别 7。
+  --el-color-primary-light-8: color-mix(
+    in srgb,
+    var(--app-primary) 20%,
+    white
+  ); // 组件库浅色级别 8。
+  --el-color-primary-light-9: color-mix(
+    in srgb,
+    var(--app-primary) 10%,
+    white
+  ); // 组件库浅色级别 9。
+  --el-color-primary-dark-2: color-mix(
+    in srgb,
+    var(--app-primary) 80%,
+    black
+  ); // 浅色模式的加深主色。
+}
+// 暗色模式仍用同一个主色，只切换背景、文字和主色衍生方式。
+html.dark:root {
+  color-scheme: dark;
+  --app-sidebar-bg: color-mix(in srgb, var(--app-primary) 75%, black);
+  --app-primary-hover: color-mix(in srgb, var(--app-primary) 85%, white); // 暗背景下悬停色略亮。
+  --app-primary-active: color-mix(in srgb, var(--app-primary) 75%, white); // 暗背景下按下色更亮。
+  --app-primary-soft: color-mix(in srgb, var(--app-primary) 20%, #1f2937); // 暗色强调背景。
+  --app-primary-text: color-mix(
+    in srgb,
+    var(--app-primary) 40%,
+    white
+  ); // 暗色页面上的品牌文字提亮。
+  --app-page: #111827;
+  --app-page-highlight: #0f172a;
+  --app-page-tint: color-mix(in srgb, var(--app-primary) 7%, #111827); // 渐变暗端也带主题色。
+  --app-page-glow-start: color-mix(
+    in srgb,
+    var(--app-primary) 14%,
+    transparent
+  ); // 暗色光晕更克制。
+  --app-page-glow-end: color-mix(in srgb, var(--app-primary) 8%, transparent); // 第二层暗色光晕。
+  --app-surface: #1f2937;
+  --app-text: #f9fafb;
+  --app-text-secondary: #9ca3af;
+  --app-label-text: #e2e8f0;
+  --app-placeholder: #94a3b8;
+  --app-border: #374151;
+  --app-decoration-border: color-mix(
+    in srgb,
+    var(--app-primary) 24%,
+    transparent
+  ); // 暗色装饰线可见度稍高。
+  --app-decoration-border-inner: color-mix(
+    in srgb,
+    var(--app-primary) 16%,
+    transparent
+  ); // 内圈仍保持较淡。
+  --app-card-border: #374151;
+  --app-card-shadow: 0 28px 72px rgb(0 0 0 / 28%), 0 4px 14px rgb(0 0 0 / 16%);
+  --app-input-hover-border: color-mix(in srgb, var(--app-primary) 65%, white); // 暗色输入框悬停色。
+  --app-button-shadow: 0 8px 18px rgb(0 0 0 / 22%);
+  --app-button-hover-shadow: 0 10px 22px rgb(0 0 0 / 28%);
+  --app-focus: color-mix(in srgb, var(--app-primary) 32%, transparent); // 暗色焦点光环。
+  --el-color-primary-light-3: color-mix(
+    in srgb,
+    var(--app-primary) 70%,
+    #141414
+  ); // 暗色组件库级别 3 向黑混合。
+  --el-color-primary-light-5: color-mix(
+    in srgb,
+    var(--app-primary) 50%,
+    #141414
+  ); // 暗色组件库级别 5。
+  --el-color-primary-light-7: color-mix(
+    in srgb,
+    var(--app-primary) 30%,
+    #141414
+  ); // 暗色组件库级别 7。
+  --el-color-primary-light-8: color-mix(
+    in srgb,
+    var(--app-primary) 20%,
+    #141414
+  ); // 暗色组件库级别 8。
+  --el-color-primary-light-9: color-mix(
+    in srgb,
+    var(--app-primary) 10%,
+    #141414
+  ); // 暗色组件库级别 9。
+  --el-color-primary-dark-2: color-mix(
+    in srgb,
+    var(--app-primary) 80%,
+    white
+  ); // 暗色组件库的加亮主色。
+}
+
+// Element Plus 的主要按钮文字默认总是白色；允许选择亮色时要改用计算后的对比色。
+html .el-button--primary {
+  --el-button-text-color: var(--app-on-primary); // 普通状态文字。
+  --el-button-hover-text-color: var(--app-on-primary); // 悬停状态文字。
+  --el-button-active-text-color: var(--app-on-primary); // 按下状态文字。
+}

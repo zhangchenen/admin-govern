@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="970" viewBox="0 0 1040 970">
+<rect width="1040" height="970" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#475569"/></marker></defs>
+<g font-family="Microsoft YaHei, sans-serif" fill="#0f172a" text-anchor="middle">
+<text x="520" y="35" font-size="24" font-weight="700">侧边栏换肤：颜色如何传到界面</text>
+<path d="M 520.0 150 V 200" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 520.0 290 V 340" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 520.0 440 V 490" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 520.0 580 V 630" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 415.0 720 V 750 H 250.0 V 780" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 625.0 720 V 750 H 790.0 V 780" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="310" y="70" width="420" height="80" rx="12" fill="#dae8fc" stroke="#64748b"/>
+<text x="520.0" y="103.0" font-size="18" font-weight="600">1. 用户选择主题色 / 明暗模式</text>
+<text x="520.0" y="130.0" font-size="15" font-weight="400">Navbar → Theme Store</text>
+<rect x="310" y="200" width="420" height="90" rx="12" fill="#dae8fc" stroke="#64748b"/>
+<text x="520.0" y="238.0" font-size="18" font-weight="600">2. 得到侧边栏真实底色</text>
+<text x="520.0" y="265.0" font-size="15" font-weight="400">浅色：主色；暗色：主色压暗 25%</text>
+<rect x="310" y="340" width="420" height="100" rx="12" fill="#fff2cc" stroke="#64748b"/>
+<text x="520.0" y="383.0" font-size="18" font-weight="600">3. 比较黑字 / 白字的清晰度</text>
+<text x="520.0" y="410.0" font-size="15" font-weight="400">同时检查普通、悬停、选中、选中悬停</text>
+<rect x="310" y="490" width="420" height="90" rx="12" fill="#fff2cc" stroke="#64748b"/>
+<text x="520.0" y="528.0" font-size="18" font-weight="600">4. 统一文字色，必要时减轻黑色遮罩</text>
+<text x="520.0" y="555.0" font-size="15" font-weight="400">文字不随鼠标悬停来回切换黑白</text>
+<rect x="310" y="630" width="420" height="90" rx="12" fill="#d5e8d4" stroke="#64748b"/>
+<text x="520.0" y="668.0" font-size="18" font-weight="600">5. 写入全局 CSS 变量</text>
+<text x="520.0" y="695.0" font-size="15" font-weight="400">sidebar-bg / text / hover / active</text>
+<rect x="40" y="780" width="420" height="90" rx="12" fill="#d5e8d4" stroke="#64748b"/>
+<text x="250.0" y="818.0" font-size="18" font-weight="600">6A. Tailwind 接入</text>
+<text x="250.0" y="845.0" font-size="15" font-weight="400">bg-sidebar + text-sidebar-text</text>
+<rect x="580" y="780" width="420" height="90" rx="12" fill="#d5e8d4" stroke="#64748b"/>
+<text x="790.0" y="818.0" font-size="18" font-weight="600">6B. Element Plus 接入</text>
+<text x="790.0" y="845.0" font-size="15" font-weight="400">el-menu 变量 + 选中背景样式</text>
+<text x="520" y="920" font-size="15">蓝色：输入与背景　黄色：文字与遮罩计算　绿色：变量与组件使用</text></g></svg>

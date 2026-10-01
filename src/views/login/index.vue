@@ -106,22 +106,22 @@ const handleSubmit = () => {
   overflow: hidden;
   padding: 48px 20px 24px;
   background:
-    radial-gradient(ellipse at 15% 12%, rgb(219 234 254 / 72%), transparent 34%),
-    radial-gradient(ellipse at 88% 82%, rgb(224 242 254 / 78%), transparent 32%),
-    linear-gradient(135deg, #f8fbff 0%, #eff6ff 100%);
+    radial-gradient(ellipse at 15% 12%, var(--app-page-glow-start), transparent 34%),
+    radial-gradient(ellipse at 88% 82%, var(--app-page-glow-end), transparent 32%),
+    linear-gradient(135deg, var(--app-page-highlight) 0%, var(--app-page-tint) 100%);
 }
 
 .login-orbit {
   position: absolute;
   z-index: -1;
-  border: 1px solid rgb(96 165 250 / 16%);
+  border: 1px solid var(--app-decoration-border);
   border-radius: 50%;
   pointer-events: none;
 
   &::before,
   &::after {
     position: absolute;
-    border: 1px solid rgb(96 165 250 / 12%);
+    border: 1px solid var(--app-decoration-border-inner);
     border-radius: 50%;
     content: '';
   }
@@ -152,12 +152,10 @@ const handleSubmit = () => {
 .login-card {
   width: min(100%, 440px);
   padding: 40px 42px 30px;
-  border: 1px solid rgb(191 219 254 / 72%);
+  border: 1px solid var(--app-card-border);
   border-radius: 20px;
   background: var(--app-surface);
-  box-shadow:
-    0 28px 72px rgb(30 64 175 / 10%),
-    0 4px 14px rgb(15 23 42 / 4%);
+  box-shadow: var(--app-card-shadow);
 }
 
 .login-brand {
@@ -166,7 +164,7 @@ const handleSubmit = () => {
   justify-content: center;
   gap: 10px;
   margin-bottom: 22px;
-  color: var(--app-primary);
+  color: var(--app-primary-text);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -207,7 +205,7 @@ const handleSubmit = () => {
   :deep(.el-form-item__label) {
     height: auto;
     margin-bottom: 8px;
-    color: #334155;
+    color: var(--app-label-text);
     font-size: 14px;
     font-weight: 600;
     line-height: 1.5;
@@ -217,7 +215,7 @@ const handleSubmit = () => {
     min-height: 48px;
     padding: 1px 14px;
     border-radius: 10px;
-    background: #fff;
+    background: var(--app-surface);
     box-shadow: 0 0 0 1px var(--app-border) inset;
     transition:
       box-shadow 160ms ease,
@@ -225,7 +223,7 @@ const handleSubmit = () => {
   }
 
   :deep(.el-input__wrapper:hover) {
-    box-shadow: 0 0 0 1px #93c5fd inset;
+    box-shadow: 0 0 0 1px var(--app-input-hover-border) inset;
   }
 
   :deep(.el-input__wrapper.is-focus) {
@@ -240,12 +238,12 @@ const handleSubmit = () => {
   }
 
   :deep(.el-input__inner::placeholder) {
-    color: #94a3b8;
+    color: var(--app-placeholder);
   }
 
   :deep(.el-input__prefix-inner > .el-icon),
   :deep(.el-input__suffix-inner > .el-icon) {
-    color: #94a3b8;
+    color: var(--app-placeholder);
   }
 }
 
@@ -256,7 +254,8 @@ const handleSubmit = () => {
   border: 0;
   border-radius: 10px;
   background: var(--app-primary);
-  box-shadow: 0 8px 18px rgb(37 99 235 / 18%);
+  color: var(--app-on-primary); // 自选浅色主色时使用黑字，避免登录按钮文字看不清。
+  box-shadow: var(--app-button-shadow);
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -267,11 +266,13 @@ const handleSubmit = () => {
 
   &:hover {
     background: var(--app-primary-hover);
-    box-shadow: 0 10px 22px rgb(37 99 235 / 24%);
+    color: var(--app-on-primary); // 悬停时保持主色上的对比文字。
+    box-shadow: var(--app-button-hover-shadow);
   }
 
   &:active {
     background: var(--app-primary-active);
+    color: var(--app-on-primary); // 按下时也保持文字可读。
     transform: translateY(1px);
   }
 
@@ -283,7 +284,7 @@ const handleSubmit = () => {
 
 .login-caption {
   margin-top: 22px;
-  color: #94a3b8;
+  color: var(--app-placeholder);
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
@@ -291,7 +292,7 @@ const handleSubmit = () => {
 
 .login-footer {
   margin-top: 24px;
-  color: #94a3b8;
+  color: var(--app-placeholder);
   font-size: 12px;
   letter-spacing: 0.04em;
 }
