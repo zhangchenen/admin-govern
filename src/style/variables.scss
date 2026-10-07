@@ -1,5 +1,8 @@
 // html:root 比组件库的 :root 更具体，确保我们定义的 Element Plus 主题变量优先。
 html:root {
+  --sidebar-width: 240px;
+  --hidden-sidebar-width: 60px;
+  --sidebarduration: 0.28s;
   --app-primary: #2563eb;
   --app-on-primary: #ffffff; // 主色上的文字；选色后由 Store 根据对比度更新。
   // 侧边栏独立配色；Store 根据真实背景和各交互状态更新这些变量。

@@ -1,20 +1,37 @@
 <template>
-  <el-menu :unique-opened="true" default-active="4" class="sidebar-menu">
-    <el-sub-menu index="1">
-      <template #title
-        ><el-icon><Location /></el-icon>
-        <span>导航一</span>
-      </template>
-      <el-menu-item index="1-1">选项1</el-menu-item>
-      <el-menu-item index="1-2">选项2</el-menu-item>
-    </el-sub-menu>
-    <el-menu-item index="4">
-      <el-icon><Setting /></el-icon>
-      <template #title>导航四</template>
-    </el-menu-item>
+  <el-menu
+    :unique-opened="true"
+    :default-active="activeMenu"
+    class="sidebar-menu"
+    router
+    :collapse="!isSidebarOpen"
+  >
+    <sidebar-item v-for="item in routes" :key="item.path" :route="item"> </sidebar-item>
   </el-menu>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter, useRoute } from 'vue-router'
+import { computed } from 'vue'
+import { filterRouters, generateMenus } from '@/utils/route'
+import sidebarItem from './sidebarItem.vue'
+import { useApp } from '@/stores/store.js'
+const router = useRouter()
+
+const routes = computed(() => {
+  const filterRoutes = filterRouters(router.getRoutes())
+
+  return generateMenus(filterRoutes)
+})
+const isSidebarOpen = computed(() => {
+  const app = useApp()
+  return app.sidebarOpen
+})
+const route = useRoute()
+const activeMenu = computed(() => {
+  const { path } = route
+  return path
+})
+</script>
 <style scoped>
 .sidebar-menu {
   /* 透明菜单透出外层主题背景；悬停只叠加一层黑色，不覆盖成白色。 */

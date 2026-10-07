@@ -11,7 +11,7 @@
     class="size-[1em] align-[-0.15em] fill-[currentColor] overflow-hidden"
     :class="className"
   >
-    <use :xlink-href="iconName"></use>
+    <use :href="iconName"></use>
   </svg>
 </template>
 <script lang="ts" setup>

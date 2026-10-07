@@ -1,10 +1,12 @@
 <template>
   <!-- 顶栏为主题操作提供一个固定入口，页面内容无需知道主题的实现细节。 -->
   <header
-    class="flex h-full min-h-16 items-center justify-end gap-3 border-b border-border bg-surface px-6 text-foreground"
+    class="absolute top-0 right-0 left-[var(--sidebar-width)] flex h-full min-h-14 items-center justify-end gap-3 border-b border-border bg-primary pr-6 pl-[5px] text-on-primary transition-[left] duration-[var(--sidebarduration)] ease-in-out"
   >
+    <hamburger></hamburger>
+    <bread-crumb></bread-crumb>
     <!-- label 把文字与颜色选择器关联，方便键盘和辅助技术识别。 -->
-    <label for="theme-color-picker" class="text-sm text-muted">主题色</label>
+    <label for="theme-color-picker" class="text-sm text-muted text-on-primary">主题色</label>
     <!-- 关闭透明色与清除操作，Store 就只需处理不透明的六位十六进制色。 -->
     <el-color-picker
       id="theme-color-picker"
@@ -16,9 +18,20 @@
       @update:model-value="themeStore.setPrimaryColor"
     />
     <!-- 明暗模式与主色独立；用户可以在任一模式下保留自选颜色。 -->
-    <el-button @click="themeStore.toggleTheme()">
-      {{ themeStore.theme === 'dark' ? '切换到浅色' : '切换到暗色' }}
-    </el-button>
+    <button
+      type="button"
+      class="inline-flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full text-on-primary transition-colors hover:bg-current/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current"
+      :aria-label="themeStore.theme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'"
+      :title="themeStore.theme === 'dark' ? '切换到亮色模式' : '切换到暗色模式'"
+      @click="themeStore.toggleTheme()"
+    >
+      <el-icon :size="22" aria-hidden="true">
+        <Sunny v-if="themeStore.theme === 'light'" />
+        <Moon v-else />
+      </el-icon>
+    </button>
+    <lang-select class="inline-block p-[0_18px_0_0] text-[24px] text-[var(--app-on-primary)] align-text-bottom cursor-pointer"></lang-select>
+    <!-- 用户头像 -->
     <el-dropdown class="cursor-[pointer]" trigger="click" placement="bottom-end">
       <div class="relative mr-[6px]!">
         <el-avatar shape="square" :size="40" :src="avatar"> </el-avatar>
@@ -42,7 +55,9 @@ import { useThemeStore } from '@/stores/theme'
 import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
-import { Tools } from '@element-plus/icons-vue'
+import { Moon, Sunny, Tools } from '@element-plus/icons-vue'
+import hamburger from '@/components/hamburger.vue'
+import BreadCrumb from '@/components/Breadcrumb/index.vue'
 const { userInfo } = storeToRefs(useUserStore())
 const avatar = computed(() => userInfo.value.avatar)
 // 组件实例读取并调用 Store；不在 Navbar 内自行写 localStorage 或 DOM。
