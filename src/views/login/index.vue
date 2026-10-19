@@ -1,17 +1,16 @@
 <template>
-  <main class="login-page" v-loading="loading" element-loading-text="加载中">
+  <main class="login-page" v-loading="loading" :element-loading-text="$t('msg.login.loading')">
     <div class="login-orbit login-orbit--top" aria-hidden="true"></div>
     <div class="login-orbit login-orbit--bottom" aria-hidden="true"></div>
-
-    <section class="login-card" aria-labelledby="login-title">
+    <section class="login-card relative" aria-labelledby="login-title">
       <div class="login-brand">
         <span class="login-brand__dot" aria-hidden="true"></span>
-        <span>ADMIN CONSOLE</span>
+        <span>{{ $t('msg.login.title') }}</span>
       </div>
-
+      <lang-select class="cursor-pointer absolute! top-[10px] right-[10px] [&_svg]:size-[30px]"></lang-select>
       <header class="login-heading">
-        <h1 id="login-title">欢迎登录</h1>
-        <p>请输入账号信息，进入管理后台</p>
+        <h1 id="login-title">{{ $t('msg.login.subTitle') }}</h1>
+        <p>{{ $t('msg.login.loginTips') }}</p>
       </header>
 
       <el-form
@@ -22,21 +21,21 @@
         label-position="top"
         @submit.prevent
       >
-        <el-form-item label="账号" prop="name">
+        <el-form-item :label="$t('msg.login.loginUser')" prop="username">
           <el-input
             v-model="form.username"
             :prefix-icon="User"
-            placeholder="请输入账号"
+            :placeholder="$t('msg.login.loginUserPlaceholder')"
             autocomplete="username"
             size="large"
           />
         </el-form-item>
 
-        <el-form-item label="密码" prop="password">
+        <el-form-item :label="$t('msg.login.loginPassword')" prop="password">
           <el-input
             v-model="form.password"
             :prefix-icon="Lock"
-            placeholder="请输入密码"
+            :placeholder="$t('msg.login.passwordPlaceholder')"
             autocomplete="current-password"
             type="password"
             show-password
@@ -46,14 +45,14 @@
         </el-form-item>
 
         <el-button class="login-submit" type="primary" size="large" @click="handleSubmit">
-          登 录
+          {{ $t('msg.login.loginBtn') }}
         </el-button>
       </el-form>
 
-      <p class="login-caption">安全登录 · 请勿向他人透露账号密码</p>
+      <p class="login-caption">{{ $t('msg.login.caption') }}</p>
     </section>
 
-    <p class="login-footer">MOOC 管理系统</p>
+    <p class="login-footer">{{ $t('msg.login.footer') }}</p>
   </main>
 </template>
 
@@ -62,17 +61,20 @@ defineOptions({
   name: 'LoginPage',
 })
 
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { Lock, User } from '@element-plus/icons-vue'
+import { useI18n } from 'vue-i18n'
 import type { userLoginInfo } from '@/views/login/type'
 import { useUserStore } from '@/stores/user'
+
+const { t } = useI18n({ useScope: 'global' })
 const formRef = ref<FormInstance>()
 const form: userLoginInfo = reactive({ username: '', password: '' })
-const rules: FormRules = {
-  username: [{ required: true, message: '请输入账号', trigger: 'blur' }],
-  password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
-}
+const rules = computed<FormRules>(() => ({
+  username: [{ required: true, message: t('msg.login.usernameRule'), trigger: 'blur' }],
+  password: [{ required: true, message: t('msg.login.passwordRule'), trigger: 'blur' }],
+}))
 const loading = ref(false)
 const userStore = useUserStore()
 const handleSubmit = () => {
@@ -85,7 +87,7 @@ const handleSubmit = () => {
       .login(form)
       .then(() => {
         loading.value = false
-        ElMessage.success('登录成功')
+        ElMessage.success(t('msg.login.loginSuccess'))
       })
       .catch(() => {
         loading.value = false

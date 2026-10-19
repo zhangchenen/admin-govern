@@ -6,7 +6,7 @@ import mEnLocale from './lang/en'
 const messages = {
   en: {
     msg: {
-      ...mEnLocale
+      ...mEnLocale,
     },
     route: {
       profile: 'Profile',
@@ -46,10 +46,13 @@ const messages = {
   },
 }
 const locale = getItem(LANG) === 'en' ? 'en' : 'zh'
+function getLanguage(){
+  return locale
+}
 const i18n = createI18n({
   legacy: false,
   globalInjection: true,
-  locale,
+  locale:getLanguage(),
   messages,
 })
 export default i18n

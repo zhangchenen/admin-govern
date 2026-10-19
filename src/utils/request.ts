@@ -2,6 +2,7 @@ import axios, { type AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/stores/user'
 import { isCheckTimeout } from './auth'
+import { useLangStore } from '@/stores/app'
 const service = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
   timeout: 5000,
@@ -9,7 +10,7 @@ const service = axios.create({
 service.interceptors.request.use(
   (config) => {
     const userStore = useUserStore()
-
+    const useLang = useLangStore()
     config.headers.icode = 'helloqianduanxunlianying'
     if (userStore.token) {
       config.headers.Authorization = `Bearer ${userStore.token}`
@@ -19,7 +20,7 @@ service.interceptors.request.use(
         return Promise.reject(new Error('token失效'))
       }
     }
-
+    config.headers['Accept-Language'] = useLang.language
     return config
   },
   (error) => {

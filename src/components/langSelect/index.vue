@@ -1,14 +1,18 @@
 <template>
   <el-dropdown trigger="click" @command="handleSetLanguage">
     <div>
-      <el-tooltip content="国际化" :effect="effect">
+      <el-tooltip :content="$t('msg.navBar.lang')" :effect="effect">
         <svg-icon icon="language"></svg-icon>
       </el-tooltip>
     </div>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item :disabled="language === 'zh'" command="zh"> 中文 </el-dropdown-item>
-        <el-dropdown-item :disabled="language === 'en'" command="en"> 英文 </el-dropdown-item>
+        <el-dropdown-item :disabled="language === 'zh'" command="zh">
+          {{ $t('msg.language.chinese') }}
+        </el-dropdown-item>
+        <el-dropdown-item :disabled="language === 'en'" command="en">
+          {{ $t('msg.language.english') }}
+        </el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -35,6 +39,6 @@ const handleSetLanguage = (lang: string) => {
   if (lang !== 'zh' && lang !== 'en') return
   langinfo.setLanguage(lang)
   i18n.locale.value = lang
-  ElMessage.success('切换语言成功')
+  ElMessage.success(i18n.t('msg.toast.switchLangSuccess'))
 }
 </script>

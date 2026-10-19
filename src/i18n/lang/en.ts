@@ -1,9 +1,19 @@
 export default {
   login: {
     title: 'User Login',
+    subTitle: 'Welcome to login',
+    loginTips: 'please enter the account information to enter the management background',
     loginBtn: 'Login',
-    usernameRule: 'Username is required',
-    passwordRule: 'Password cannot be less than 6 digits',
+    loginUser: 'Account',
+    loginPassword: 'Password',
+    loginUserPlaceholder: 'please enter the account',
+    passwordPlaceholder: 'Please enter your password',
+    loading: 'Loading',
+    caption: 'Secure sign in · Never share your account or password',
+    footer: 'MOOC Admin System',
+    loginSuccess: 'Signed in successfully',
+    usernameRule: 'Please enter your account',
+    passwordRule: 'Please enter your password',
     desc: `
     Test authority account:<br />
      Provide three kinds of authority accounts:<br />
@@ -16,7 +26,7 @@ export default {
      You can log in with the imported username <br />
      The password is unified as: 123456 <br />
      <b>Note: Import user-discriminatory Chinese and English libraries! ! ! ! </b>
-    `
+    `,
   },
   route: {
     profile: 'Profile',
@@ -30,23 +40,27 @@ export default {
     articleRanking: 'ArticleRanking',
     articleCreate: 'ArticleCreate',
     articleDetail: 'ArticleDetail',
-    articleEditor: 'ArticleEditor'
+    articleEditor: 'ArticleEditor',
   },
   toast: {
-    switchLangSuccess: 'Switch Language Success'
+    switchLangSuccess: 'Switch Language Success',
   },
   tagsView: {
     refresh: 'Refresh',
     closeRight: 'Close Rights',
-    closeOther: 'Close Others'
+    closeOther: 'Close Others',
   },
   theme: {
     themeColorChange: 'Theme Color Change',
-    themeChange: 'Theme Change'
+    themeChange: 'Theme Change',
+    themeColorLabel: 'Theme color',
+    selectThemeColor: 'Choose theme color',
+    switchToLight: 'Switch to light mode',
+    switchToDark: 'Switch to dark mode',
   },
   universal: {
     confirm: 'confirm',
-    cancel: 'cancel'
+    cancel: 'cancel',
   },
   navBar: {
     themeChange: 'Theme Modification',
@@ -56,7 +70,11 @@ export default {
     guide: 'Function Guide',
     home: 'Home',
     course: 'Course homepage',
-    logout: 'Log out'
+    logout: 'Log out',
+  },
+  language: {
+    chinese: 'Chinese',
+    english: 'English',
   },
   guide: {
     close: 'close',
@@ -79,7 +97,7 @@ export default {
     tagTitle: 'Label',
     tagDesc: 'Opened page tab',
     sidebarTitle: 'menu',
-    sidebarDesc: 'Project function menu'
+    sidebarDesc: 'Project function menu',
   },
   profile: {
     muted:
@@ -92,8 +110,10 @@ export default {
     author: 'Author',
     name: 'Sunday',
     job: 'A front-end development program',
+    emptyFeature: 'No feature data',
+    emptyChapter: 'No chapter data',
     Introduction:
-      'A senior technical expert, once worked in a domestic first-line Internet company, and has coordinated multiple large-scale projects with more than tens of millions of users. Committed to researching big front-end technology, he has been invited to participate in domestic front-end technology sharing sessions many times, such as: Google China Technology Sharing Session in 2018.'
+      'A senior technical expert, once worked in a domestic first-line Internet company, and has coordinated multiple large-scale projects with more than tens of millions of users. Committed to researching big front-end technology, he has been invited to participate in domestic front-end technology sharing sessions many times, such as: Google China Technology Sharing Session in 2018.',
   },
   userInfo: {
     print: 'Print',
@@ -109,11 +129,11 @@ export default {
     experience: 'Experience',
     major: 'Professional',
     glory: 'Glory',
-    foot: 'Signature:___________Date:___________'
+    foot: 'Signature:___________Date:___________',
   },
   uploadExcel: {
     upload: 'Click upload',
-    drop: 'Drag files here'
+    drop: 'Drag files here',
   },
   excel: {
     importExcel: 'excel import',
@@ -138,7 +158,7 @@ export default {
     importSuccess: ' Employee data imported successfully',
     dialogTitle1: 'Are you sure you want to delete the user ',
     dialogTitle2: ' Is it?',
-    roleDialogTitle: 'Configure roles'
+    roleDialogTitle: 'Configure roles',
   },
   role: {
     buttonTxt: 'New Role',
@@ -151,12 +171,12 @@ export default {
     dialogTitle: 'New role',
     dialogRole: 'Role Name',
     dialogDesc: 'Role description',
-    updateRoleSuccess: 'User role updated successfully'
+    updateRoleSuccess: 'User role updated successfully',
   },
   permission: {
     name: 'Authority name',
     mark: 'Authority ID',
-    desc: 'Permission description'
+    desc: 'Permission description',
   },
   article: {
     ranking: 'Ranking',
@@ -178,6 +198,6 @@ export default {
     commit: 'commit',
     createSuccess: 'The article was created successfully',
     editorSuccess: 'Article modified successfully',
-    sortSuccess: 'Article ranking modified successfully'
-  }
+    sortSuccess: 'Article ranking modified successfully',
+  },
 }

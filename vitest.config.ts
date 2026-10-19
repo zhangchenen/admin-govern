@@ -10,7 +10,7 @@ export default mergeConfig(
       server: {
         deps: { inline: [/element-plus/] },
       },
-      exclude: [...configDefaults.exclude, 'e2e/**'],
+      exclude: [...configDefaults.exclude, 'e2e/**', '.kilo/**'],
       root: fileURLToPath(new URL('./', import.meta.url)),
     },
   }),

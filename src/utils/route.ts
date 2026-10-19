@@ -1,4 +1,4 @@
-import type { RouteRecordNormalized } from 'vue-router'
+import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
 
 export interface MenuRoute {
   path: string
@@ -11,7 +11,7 @@ export interface MenuRoute {
 
 // 返回所有子路由
 const getChildrenRoutes = (routes: RouteRecordNormalized[]) => {
-  const result: RouteRecordNormalized[] = []
+  const result: RouteRecordRaw[] = []
   routes.forEach((route) => {
     if (route.children && route.children.length) {
       result.push(...route.children)
@@ -34,13 +34,17 @@ export const filterRouters = (routes: RouteRecordNormalized[]) => {
     })
   })
 }
-export function generateMenus(routes: RouteRecordNormalized[], basePath = ''): MenuRoute[] {
+export function generateMenus(
+  routes: (RouteRecordNormalized | RouteRecordRaw)[] = [],
+  basePath = '',
+): MenuRoute[] {
   const result: MenuRoute[] = []
 
   routes.forEach((item) => {
     const currentPath = resolveRoutePath(basePath, item.path)
-    const title = item.meta.title
-    const icon = item.meta.icon
+    // children 保留原始路由配置，未配置菜单信息的路由可能没有 meta。
+    const title = item.meta?.title
+    const icon = item.meta?.icon
     const hasMenuMeta = typeof title === 'string' && typeof icon === 'string'
 
     if (!hasMenuMeta) {

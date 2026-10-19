@@ -7,10 +7,10 @@
           :to="getBreadcrumbTarget(item)"
           class="breadcrumb-link"
         >
-          {{ item.meta?.title }}
+          {{ generateTitle(item.meta?.title as string) }}
         </router-link>
         <span v-else class="breadcrumb-current" aria-current="page">
-          {{ item.meta?.title }}
+          {{ generateTitle(item.meta?.title as string) }}
         </span>
       </el-breadcrumb-item>
     </transition-group>
@@ -20,13 +20,14 @@
 defineOptions({
   name: 'BreadCrumb',
 })
+import { generateTitle } from '@/utils/i18n'
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import type { RouteRecordNormalized } from 'vue-router'
 const route = useRoute()
 const breadcrumbData = ref<RouteRecordNormalized[]>([])
 const getBreadcrumbTarget = (item: RouteRecordNormalized) => {
-  const firstChild = item.children.find((child) => child.meta.title)
+  const firstChild = item.children.find((child) => child.meta?.title)
   return firstChild?.path ?? item.path
 }
 const getBreadcrumbData = () => {

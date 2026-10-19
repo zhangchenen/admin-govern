@@ -6,6 +6,7 @@ import type { userInfo as UserInfo } from '@/types/entity'
 import { ref } from 'vue'
 import router from '@/router'
 import { setTimeStamp } from '@/utils/auth'
+import { watchSwitchLang } from '@/utils/i18n'
 export const useUserStore = defineStore(
   'user',
   () => {
@@ -14,6 +15,11 @@ export const useUserStore = defineStore(
     function setUserInfo(userinfo: UserInfo) {
       userInfo.value = userinfo
     }
+    watchSwitchLang(() => {
+      if (token.value) {
+        getUserInfo()
+      }
+    })
     async function getUserInfo() {
       const res = await getUser()
       setUserInfo(res)

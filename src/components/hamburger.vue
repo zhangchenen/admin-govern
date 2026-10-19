@@ -1,6 +1,10 @@
 <template>
   <div @click="toggleClick" class="p-[0px_16px]">
-    <svg-icon class="inline-block align-middle w-[20px] h-[20px]" :icon="icon"></svg-icon>
+    <svg-icon
+      class="inline-block align-middle w-[20px] h-[20px]"
+      :icon="icon"
+      id="guide-hamburger"
+    ></svg-icon>
   </div>
 </template>
 <script setup lang="ts">
