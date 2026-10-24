@@ -6,6 +6,7 @@ import ArticleCreate from './modules/ArticleCreate'
 import PermissionList from './modules/PermissionList'
 import RoleList from './modules/RoleList'
 import UserManage from './modules/UserManage'
+import { useUserStore } from '@/stores/user'
 export const publicRoutes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -47,6 +48,15 @@ export const publicRoutes: RouteRecordRaw[] = [
     component: () => import('@/views/login/index.vue'),
   },
 ]
+export function resetRouter() {
+  const userStore = useUserStore()
+  if (userStore.userInfo && userStore.userInfo.permission && userStore.userInfo.permission.menus) {
+    const menus = userStore.userInfo.permission.menus
+    menus.forEach((menu) => {
+      router.removeRoute(menu)
+    })
+  }
+}
 export const privateRoutes: RouteRecordRaw[] = [
   Article,
   ArticleCreate,
@@ -56,7 +66,7 @@ export const privateRoutes: RouteRecordRaw[] = [
 ]
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [...publicRoutes, ...privateRoutes],
+  routes: [...publicRoutes],
 })
 
 export default router

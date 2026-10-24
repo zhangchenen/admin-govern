@@ -65,10 +65,12 @@ import { computed, reactive, ref } from 'vue'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { Lock, User } from '@element-plus/icons-vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import type { userLoginInfo } from '@/views/login/type'
 import { useUserStore } from '@/stores/user'
 
 const { t } = useI18n({ useScope: 'global' })
+const router = useRouter()
 const formRef = ref<FormInstance>()
 const form: userLoginInfo = reactive({ username: '', password: '' })
 const rules = computed<FormRules>(() => ({
@@ -85,9 +87,10 @@ const handleSubmit = () => {
     loading.value = true
     userStore
       .login(form)
-      .then(() => {
+      .then(async () => {
         loading.value = false
         ElMessage.success(t('msg.login.loginSuccess'))
+        await router.replace('/')
       })
       .catch(() => {
         loading.value = false

@@ -4,6 +4,8 @@ import * as icons from '@element-plus/icons-vue'
 import App from './App.vue'
 import router from './router'
 import 'element-plus/theme-chalk/dark/css-vars.css'
+import 'element-plus/theme-chalk/el-message.css'
+import 'element-plus/theme-chalk/el-message-box.css'
 import './permission'
 import './assets/main.css'
 import './style/variables.scss'
@@ -12,6 +14,9 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import SvgIcons from '@/assets/svg/icons'
 import { useThemeStore } from './stores/theme'
 import i18n from './i18n'
+import TimeFilter from './filter/time'
+import PrintPlugin from './plugins/print'
+import installDirective from '@/directives'
 const app = createApp(App)
 for (const [key, component] of Object.entries(icons)) {
   app.component(key, component)
@@ -23,4 +28,7 @@ app.use(pinia)
 useThemeStore()
 app.use(router)
 app.use(SvgIcons)
+app.use(TimeFilter)
+app.use(PrintPlugin)
+installDirective(app)
 app.mount('#app')
